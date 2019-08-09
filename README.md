@@ -30,4 +30,3 @@ Once the server is up you can run `npm start`. The console may prompt you to run
 
 ### Author
 Marcus Killebrew
-# rus-facebook-ads
