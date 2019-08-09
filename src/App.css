@@ -31,3 +31,14 @@
     transform: rotate(360deg);
   }
 }
+
+.filter {
+  display: flex
+}
+
+.house_logo {
+  z-index: 1;
+  position: absolute;
+  top: 50px;
+  left: 30px;
+}

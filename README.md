@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Social Media Ad Reference
 
-## Available Scripts
+This project was designed to provide reference to the social media advertisements deemed Russian interference during the US 2016 election. You can access all of the files for direct download, or you can use the reference table to search and filter data from the files. The reference table is paginated. If you search for the Ad ID or add filter(s) and do not see results, try increasing the rows per page and/or moving to another page in the table. You can also sort the ads (ascending or descending) based on the number of clicks or impressions, as well as the date posted or Ad ID.
 
-In the project directory, you can run:
+You may also refer to the original source [here](https://intelligence.house.gov/social-media-content/social-media-advertisements.htm)
 
-### `npm start`
+### Demo
+[demo](https://youtu.be/mBnMHBpuKt0)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Getting Started
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+To get started, you may clone the repo. Once inside the directory, you will need to install the following packages:
+* `npm i @material-ui/core`  for Material UI Framework
+* `npm i @material-ui/icons` for Material UI Icons
+* `npm i moment` for formatting Date
+* `npm i react` React standard
+* `npm i react-bootstrap` for additional UI styles based on Bootstrap Framework
+* `npm i react-router-dom` for client-side routing
+* `npm i react-dom` React standard
+* `npm i react-scripts` React standard
 
-### `npm test`
+### Running the server
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There is no backend API used for this project as data is provided in a JSON file. You will need to run `json-server --watch index.json` on port 3000 in order for the app to work.
 
-### `npm run build`
+### Running the app
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once the server is up you can run `npm start`. The console may prompt you to run on another port. Make sure to select 'Yes'.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Author
+Marcus Killebrew
+# rus-facebook-ads
