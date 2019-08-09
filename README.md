@@ -21,7 +21,8 @@ To get started, you may clone the repo. Once inside the directory, you will need
 
 ### Running the server
 
-There is no backend API used for this project as data is provided in a JSON file. You will need to run `json-server --watch index.json` on port 3000 in order for the app to work.
+There is no backend API used for this project as data is provided in a JSON file. You will need to run 
+`json-server --watch index.json` on port 3000 in order for the app to work.
 
 ### Running the app
 
