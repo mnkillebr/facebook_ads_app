@@ -138,6 +138,7 @@ const HomePage = () => {
     const [excludedFilter, setExcludedFilter] = useState('');
     const [filters, setFilters] = useState([]);
 
+
     const handleRequestSort = (event, property) => {
         const isDesc = orderBy === property && order === 'desc';
         setOrder(isDesc ? 'asc' : 'desc');
@@ -166,13 +167,76 @@ const HomePage = () => {
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-    console.log(filters)
+    const ageRows = rows.map(row=>row.targeting.age);
+
+    const locationRows = rows.map(row=> {
+        if (row.targeting["location_living_in"]) {
+            return Array.isArray(row.targeting["location_living_in"]) ?
+            row.targeting["location_living_in"] :
+            Object.keys(row.targeting["location_living_in"])
+        } else {
+            return row.targeting.location
+        }    
+    });
+    
+    const exclusionRows = rows.map(row => Array.isArray(row.targeting["excluded_connections"]) ? row.targeting["excluded_connections"] : typeof row.targeting["excluded_connections"])
+    .filter(row => row!== "undefined");
+
+    const interestRows = rows.map(row =>
+        row.targeting.interests ?
+            row.targeting.interests :
+            row.targeting["people_who_match"] ?
+                row.targeting["people_who_match"].interests :
+                row.targeting["and_must_also_match"] ?
+                    row.targeting["and_must_also_match"].interests :
+                    row)
+    .filter(row => Array.isArray(row));
+
+    const placementRows = rows.map(row => row.targeting.placements)
+
+    // const connectionRows = rows.map(row => Array.isArray(row.targeting["connections"]) ? row.targeting["connections"] : typeof row.targeting["connections"])
+    //     .filter(row => row != "undefined");
+    
+    const getValueCount = (array) => {
+        let counts = {};
+        array.forEach(element => { counts[element] = (counts[element] || 0) + 1; });
+        return counts;
+    }
+
+    const sortProperties = (obj) => {
+        let arr = [];
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                arr.push([key, obj[key]]); 
+            };
+        };
+
+        arr.sort(function (a, b) {
+            // return a[1] - b[1]; //for ascending
+            return b[1] - a[1]; //for descending
+        });
+        return arr; 
+    }
+
+    // console.log(sortProperties(getValueCount(placementRows.flat())))
+    // console.log(sortProperties(getValueCount(locationRows)))
+    // console.log(sortProperties(getValueCount(ageRows)))
+    // console.log(sortProperties(getValueCount(exclusionRows)))
+    // console.log(sortProperties(getValueCount(interestRows.flat())))
+    // console.log(sortProperties(getValueCount(connectionRows)))
 
     return (
         <div className={classes.root}>
             <Banner />
             <AdLinks />
-            <NavBar 
+            <NavBar
+                sortProperties={sortProperties}
+                getValueCount={getValueCount} 
+                ageRows={ageRows}
+                locationRows={locationRows}
+                placementRows={placementRows.flat()}
+                exclusionRows={exclusionRows}
+                interestRows={interestRows.flat()}
                 filters={filters} 
                 setFilters={setFilters}
                 searchID={searchID} 
@@ -208,6 +272,15 @@ const HomePage = () => {
                             {stableSort(rows, getSorting(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .filter( row => searchID == '' ? row : String(row.id).includes(searchID))
+                                // .filter( row => 
+                                //     Array.isArray(row.targeting.interests) ?
+                                //         row.targeting.interests.find(element => element.includes(interestsFilter)) :
+                                //         Array.isArray(row.targeting["people_who_match"]) ?
+                                //             row.targeting["people_who_match"].interests.find(element => element.includes(interestsFilter)) :
+                                //             Array.isArray(row.targeting["and_must_also_match"]) ?
+                                //                 row.targeting["and_must_also_match"].interests.find(element => element.includes(interestsFilter)) :
+                                //                 row
+                                // )
                                 .filter(row => Array.isArray(row.targeting.interests) ? row.targeting.interests.find(element => element.includes( interestsFilter )) : row)
                                 .filter(row => Array.isArray(row.targeting.age) ? row.targeting.age.find(element => element.includes( ageFilter )) : row)
                                 .filter(row => Array.isArray(row.targeting.location) ? row.targeting.location.find(element => element.includes( locationFilter )) : row)

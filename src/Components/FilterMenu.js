@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const FilterMenu = (props) => {
 
-    console.log(props)
+    // console.log(props)
 
     const handleAgeFilter = (e) => {
         props.setAgeFilter(e.target.value)

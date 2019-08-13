@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
 import FilterMenu from './FilterMenu'
+import Analytics from './Analytics'
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -57,13 +58,22 @@ const NavBar = (props) => {
     }
 
     const [filterOpen, setFilterOpen] = useState(false);
+    const [analyticsOpen, setAnalyticsOpen] = useState(false);
 
     const handleClick = () => {
         setFilterOpen(true);
     }
 
+    const handleClick2 = () => {
+        setAnalyticsOpen(true);
+    }
+
     const handleClose = () => {
         setFilterOpen(false)
+    }
+
+    const handleClose2 = () => {
+        setAnalyticsOpen(false)
     }
 
     return (
@@ -109,6 +119,22 @@ const NavBar = (props) => {
                             setPlacementsFilter={props.setPlacementsFilter}
                             excludedFilter={props.excludedFilter}
                             setExcludedFilter={props.setExcludedFilter}
+                        />
+                    </div>
+                    <div>
+                        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick2}>
+                            Target Analytics
+                        </Button>
+                        <Analytics 
+                            handleClose={handleClose2}
+                            analyticsOpen={analyticsOpen}
+                            sortProperties={props.sortProperties}
+                            getValueCount={props.getValueCount}
+                            ageRows={props.ageRows}
+                            locationRows={props.locationRows}
+                            placementRows={props.placementRows}
+                            exclusionRows={props.exclusionRows}
+                            interestRows={props.interestRows}
                         />
                     </div>
                 </Toolbar>
