@@ -5,7 +5,7 @@ This project was designed to provide reference to the social media advertisement
 You may also refer to the original source [here](https://intelligence.house.gov/social-media-content/social-media-advertisements.htm)
 
 ### Backend
-A backend was added using Node.js, Express.js and Mongo DB Atlas cloud storage. The code can be found [here](https://github.com/mnkillebr/facebook_ads_app_backend)
+A backend was added using Node.js, Express.js and Mongo DB Atlas cloud storage. To connect to the server, cd into the backend directory and run `npm start`. The code can be found [here](https://github.com/mnkillebr/facebook_ads_app_backend)
 
 ### Demo
 [demo](https://youtu.be/mBnMHBpuKt0)
