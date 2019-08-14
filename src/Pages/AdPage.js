@@ -83,7 +83,15 @@ const AdPage = ({ match }) => {
                             {adTargeting ? Object.keys(adTargeting).map( key=> 
                                 <Row>
                                     <Col md={4}>{removeUnderscore(key)[0].toUpperCase() + removeUnderscore(key).slice(1)}</Col>
-                                    <Col md={8}>{Array.isArray(adTargeting[key]) ? adTargeting[key].map(element => <Chip variant="outlined" label={element} />) : adTargeting[key].interests.map(element => <Chip variant="outlined" label={element} />)}</Col>
+                                    <Col md={8}>{Array.isArray(adTargeting[key]) ? 
+                                        adTargeting[key].map(element => <Chip variant="outlined" label={element} />) : 
+                                        Array.isArray(adTargeting[key].interests) ?
+                                        adTargeting[key].interests.map(element => <Chip variant="outlined" label={element} />) :
+                                        Object.keys(adTargeting[key]) ? 
+                                        Object.keys(adTargeting[key]).map(element => <Chip variant="outlined" label={`${element}: ${adTargeting[key][element]}`} />) :
+                                        null
+                                    }
+                                    </Col>
                                 </Row>
                                 ) : null}
                         </Col>

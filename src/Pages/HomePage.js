@@ -45,7 +45,7 @@ const headRows = [
     { id: 'text', numeric: false, disablePadding: false, label: 'Text' },
     { id: 'clicks', numeric: true, disablePadding: false, label: 'Clicks' },
     { id: 'impressions', numeric: true, disablePadding: false, label: 'Impressions' },
-    { id: 'spend', numeric: true, disablePadding: false, label: 'Spend (RUS)' },
+    { id: 'spend', numeric: true, disablePadding: false, label: 'Spend' },
 ];
 
 function EnhancedTableHead(props) {
@@ -64,7 +64,7 @@ function EnhancedTableHead(props) {
                         padding={row.disablePadding ? 'none' : 'default'}
                         sortDirection={orderBy === row.id ? order : false}
                     >
-                        {row.label === "Text" || row.label === "Spend (RUS)" ? 
+                        {row.label === "Text" || row.label === "Spend" ? 
                             row.label :
                             <TableSortLabel
                                 active={orderBy === row.id}
@@ -300,7 +300,7 @@ const HomePage = () => {
                                             <TableCell align="left">{!row.text ? null : <Link to={`/${row.id}`}>{`${row.text.substring(0, 80)}...`}</Link>}</TableCell>
                                             <TableCell align="right">{row.clicks}</TableCell>
                                             <TableCell align="right">{row.impressions}</TableCell>
-                                            <TableCell align="right">{row.spend.amount}</TableCell>
+                                            <TableCell align="right">{`${row.spend.amount} (${row.spend.currency})`}</TableCell>
                                         </TableRow>
                                     );
                                 })}
